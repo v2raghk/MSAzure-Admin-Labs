@@ -1,6 +1,6 @@
 # Lab 1: Create a Virtual Machine in Azure from Azure Portal.
 
-In this lab, we will create a Windows Virtual Machine in Azure via Azure portal.
+In this lab, we will create a Windows Virtual Machine in Azure via Azure portal. Later, we will create the same Virtual Machine using Terraform.
 
 Step 1: In Azure portal, search for Virtual Machines and click on create Virtual Machine.
 
