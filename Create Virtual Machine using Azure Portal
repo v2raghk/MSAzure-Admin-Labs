@@ -1,24 +1,85 @@
-In this lab, we will create a Windows Virtual Machine in Azure via Azure portal. Later, we will create the same Virtual Machine using Terraform.
+Create a Virtual Machine in Microsoft Azure (Step-by-Step Guide)
 
-Step 1: In Azure portal, search for Virtual Machines and click on create Virtual Machine.
+This tutorial provides step by step details about how to create a Windows virtual machine via Azure portal.
 
-Step 2: Add the details to create Virtual Machine including:
+Prerequisites: Microsoft Azure account
 
-      Resource Group
-      VM Name
-      Region
-      Image
-      Credentials and other details
-Step 3: Enable RDP under "inbound port rules" to enable RDP access to VM. By default, it allows RDP from all IP addresses. This is not secure. Once VM is created, secure NSG rule to use only “my IP address” to allow RDP from your public IP address only.
+Permissions to create resources: Contributor role or above
 
-Step 4: Go to disks tab and use standard SSD for testing purposes. For Production, it is recommended to use Premium SSD for best performance.
+Lets see the process in action.
 
-On Azure portal, it shows an estimated monthly cost to run this VM, which is very handy.
+Step 1: Sign In to Azure Portal
 
-Step 5: It will take couple of minutes to create the virtual machine. Once VM is created, go to network settings to secure Network Security Group for RDP. Change source to "My IP Address" so it will only allow the public IP address of our local machine to RDP on Azure VM. Note that the warning sign next to RDP rule will also disappear.
+      Go to: https://portal.azure.com and enter your credentials.
 
-Step 6: Connect via RDP. Click on Connect to connect to VM via RDP. Download RDP File. RDP to VM and connect using the credentials created when commissioning VM. We are logged in to Azure VM. Along with VM, it create other resources including OS disks, public IP address and other resources.
+Step 2: Create a New Virtual Machine
 
-Step 7: Configure Auto Shutdown. Under operations in the navigation bar of VM, we can configure auto shutdown on Dev/Test VMs to save costs. Add an email address to receive automated emails. Make sure to delete all resources so you don’t get charged.
+      In the top search bar, type "Virtual Machines". Click + Create → Azure virtual machine.
 
-Step 8: Once the testing is completed, select all resources and click on delete so you are not being charged for the resources.
+Step 3: Configure Basic Settings
+
+      Subscription: Choose your Azure subscription.
+      Resource Group: Create a new one (e.g., RG-Demo-VM). Name the resources using a naming convention e.g. rg for resource group and so on.
+      
+      Virtual Machine Name: DemoVM101
+      
+      Region: Choose one close to your location (e.g.UK South)
+      
+      Availability Options: Leave default
+      
+      Image: Choose Windows Server 2022 Datacenter (or Ubuntu if you prefer Linux)
+      
+      Size: Click See all sizes → pick a size (e.g. Standard B2s)
+      
+      Username: Provide a username e.g. cloudadmin
+      
+      Password: Strong password. Make sure you provide a strong password to secure your virtual machine.
+      
+      Inbound Port Rules: Allow RDP (3389) or SSH (22) depending on OS
+      
+      Click Next: Disks
+
+Step 4: Configure Disks (Optional)
+
+      Choose Standard SSD or Premium SSD. For testing/development environments, using Standard SSD. For Production environments, use Premium SSD. Note that premium SSD is more expensive.
+      Leave encryption and advanced settings default.
+      
+      Click Next: Networking
+
+Step 5: Configure Networking
+
+      Create new Virtual Network e.g. VNetDemo
+      
+      Subnet: Leave default
+      
+      Public IP: Yes (for internet access)
+      
+      NIC network security group (NSG): Select Basic
+      
+      Inbound ports: Allow selected ports (RDP or SSH)
+      
+      Click Next → accept defaults until the Review + Create step.
+
+Step 6: Review + Create
+
+      Validate your configuration. Click Create
+      
+      Azure will deploy your virtual machine. It takes apx 2 mins.
+
+Step 7: Connect to VM
+
+      After deployment, go to Virtual Machines → Select your VM. 
+      
+      Click Connect → RDP (for Windows) or SSH (for Linux)
+      
+      Use credentials you set earlier to log in
+
+Tips & Best Practices:
+
+      Delete VM after testing to avoid charges (don’t forget to delete the resource group as well).
+      
+      Enable Just-in-Time VM access from Microsoft Defender for security.
+      
+      Use Azure Bastion for more secure access. We will cover this in another tutorial.
+      
+      It is advisable to enable auto-shutdown on Dev/Test environments to save cost. Dont enable it on Production VMs.
