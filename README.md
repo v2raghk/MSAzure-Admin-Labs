@@ -24,19 +24,3 @@ Each lab includes:
 - Screenshots or terminal output
 - Troubleshooting tips
 
-## 🏗️ Project Structure
-
-📁 azure-admin-labs/
-├── vm-deployment/
-│ ├── readme.md
-│ ├── arm-template.json
-│ └── diagram.png
-├── storage-management/
-├── network-basics/
-├── azure-monitoring/
-├── scripts/
-│ └── automation-scripts.ps1
-└── docs/
-└── best-practices.md
-
-
