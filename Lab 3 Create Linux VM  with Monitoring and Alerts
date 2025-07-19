@@ -1,17 +1,18 @@
-Project 1: Create Linux VM with Monitoring and Alerts
+Lab 3: Level (Beginners/Intermediate)
 
-    Overview
+Create Linux VM with Monitoring and Alerts
+
+Overview
     
     In this project, we will build a Linux VM with monitoring and alerting enabled. This kind of VM can be used in production monitoring setup for a critical server.
     
-    Component				          Purpose
+    Component				      Purpose
     Resource Group			      Container to hold Azure resources
-    Virtual Machine 			    Linux VM for app server
-    Log Analytics Workspace		Collects logs and metrics from VM
-    Azure Monitor Insights		Tracks CPU, memory, and other telemetry
-    Alert Rule				        Triggers when VM CPU > 80%
-    Action Group 				      Sends email notifications when alerts fire
-
+    Virtual Machine 			  Linux VM for app server
+    Log Analytics Workspace		  Collects logs and metrics from VM
+    Azure Monitor Insights		  Tracks CPU, memory, and other telemetry
+    Alert Rule				      Triggers when VM CPU > 80%
+    Action Group 				  Sends email notifications when alerts fire
 
 Step 1: Create a Resource Group
 
@@ -77,5 +78,3 @@ Step 7 Create Action Group in Monitor
  
         Add an Action Group to send email/Teams alerts.
         We can automate VM restart using Automation Runbooks.
-
-
