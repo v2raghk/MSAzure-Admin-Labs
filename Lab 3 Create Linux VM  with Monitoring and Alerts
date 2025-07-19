@@ -1,0 +1,81 @@
+Project 1: Create Linux VM with Monitoring and Alerts
+
+    Overview
+    
+    In this project, we will build a Linux VM with monitoring and alerting enabled. This kind of VM can be used in production monitoring setup for a critical server.
+    
+    Component				          Purpose
+    Resource Group			      Container to hold Azure resources
+    Virtual Machine 			    Linux VM for app server
+    Log Analytics Workspace		Collects logs and metrics from VM
+    Azure Monitor Insights		Tracks CPU, memory, and other telemetry
+    Alert Rule				        Triggers when VM CPU > 80%
+    Action Group 				      Sends email notifications when alerts fire
+
+
+Step 1: Create a Resource Group
+
+      Go to Azure Portal and create a resource group.
+ 
+Step 2: Create Linux VM
+
+      Create Linux VM with these details:
+
+      VM name: az305vm1
+      Region: same as resource group
+      Image: Ubuntu Server 22.04 LTS (or latest Ubuntu)
+      Size: Standard B1s (small, cheap)
+      Authentication: SSH public key (paste your SSH public key or generate new)
+      Username: azureuser
+      Leave defaults for other settings (disks, networking, management)
+      Click Review + create
+ 
+Step 3: Create Log Analytics Workspace
+
+        Create Log Analytics workspaces.
+        Resource group: rg-az305-p1
+        Name: az305-logs-p1
+        Region: same as Virtual Machine
+ 
+Step 4: Enable Monitoring on VM
+
+        Go to Linux VM. Under Monitoring, click Insights. Click Enable.
+        Select the Log Analytics workspace you created: az305-log-p1. 
+        Enable and wait for the extension to install. This might take a few mins.
+
+Step 5: Create Alert for High CPU
+
+        Search Monitor in Azure portal. Click Alerts on left panel.
+ 
+        Click + New alert rule. 
+        Set Scope: select VM.
+ 
+        Under Condition, click Add condition. 
+        Search for and select Percentage CPU
+        Set Condition:
+        •	Aggregation type: Average
+        •	Threshold: Greater than 40
+        •	Aggregation granularity: 5 minutes
+        •	Click Done
+ 
+        Skip Action group for now (or create if you want email notifications)
+        Name your alert rule: HighCPUAlert
+        Review and create the rule.
+ 
+Step 6: Test High CPU Alert
+
+          SSH into VM.
+          ssh azureuser@<your-vm-public-ip>
+           
+          Install stress tool and run CPU load:
+          sudo apt-get update
+          sudo apt-get install -y stress
+          stress --cpu 2 --timeout 300
+          This will spike CPU usage and trigger the alert.
+
+Step 7 Create Action Group in Monitor
+ 
+        Add an Action Group to send email/Teams alerts.
+        We can automate VM restart using Automation Runbooks.
+
+
