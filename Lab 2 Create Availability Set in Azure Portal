@@ -1,71 +1,56 @@
-What is an Availability Set?
+Availability Sets
 
-In Microsoft Azure, an Availability Set is a feature that ensures high availability for Virtual Machines. 
-Azure distributes VMs across multiple fault domains (physical hardware) and update domains (update schedule), reducing the risk of simultaneous downtime.
+Overview
 
-Objective: Create an Availability Set and launch Virtual Machines within it to achieve better fault tolerance and update protection using Azure Portal.
-
-Prerequisites: An active Azure subscription
-
-Permission to create resources: Owner or Contributor role
+      In Microsoft Azure, an Availability Set is a feature that ensures high availability for Virtual Machines. 
+      Azure distributes VMs across multiple fault domains (physical hardware) and update domains (update schedule), reducing the risk of simultaneous downtime.
+      
+      Objective: Create an Availability Set and launch Virtual Machines within it to achieve better fault tolerance and update protection using Azure Portal.
+      
+      Prerequisites: An active Azure subscription
+      Permission to create resources: Owner or Contributor role
 
 Step 1: Sign in to Azure Portal
 
-  Go to https://portal.azure.com and log in with your credentials.
+      Go to https://portal.azure.com and log in with your credentials.
 
 Step 2: Create an Availability Set
 
-  In the left-hand menu, click "Create a resource". In the search box, type "Availability Set" and select it. Click Create.
-  
-  Fill in the details:
-  
-  Subscription: Select your subscription
-  
-  Resource Group: Create a new one or use an existing
-  
-  Name: e.g. avset-demo
-  
-  Region: Choose a region e.g. UK South
-  
-  Fault Domains: Choose 2 or 3 (default is 2)
-  
-  Update Domains: 5 (default is 5)
-  
-  Use managed disks: Yes
-  
-  Click Review + create, then click Create.
+      In the left-hand menu, click "Create a resource". In the search box, type "Availability Set" and select it. Click Create.  
+      Fill in the details:  
+      Subscription: Select your subscription  
+      Resource Group: Create a new one or use an existing  
+      Name: e.g. avset-demo
+      Region: Choose a region e.g. UK South  
+      Fault Domains: Choose 2 or 3 (default is 2)  
+      Update Domains: 5 (default is 5)  
+      Use managed disks: Yes
+      Click Review + create, then click Create.
 
 Step 3: Create a Virtual Machine in Availability Set
 
-  In Azure Portal, go to Virtual Machines. Click + Create => Azure virtual machine.
-  
-  On Basics tab:
-  
-  Fill in VM details:
-  
-  Availability options: Select Availability Set
-  
-  Choose the Availability Set you just created (avset-demo)
-  
-  Complete the rest of VM setup: size, disk, networking, etc. Details can be found in the other tutorial "Lab 1 Create Virtual Machine using Azure Portal". 
-  
-  Click Review + Create, then Create.
-  
-  Repeat these steps to add more VMs to the same Availability Set.
-  
+      In Azure Portal, go to Virtual Machines. Click + Create => Azure virtual machine.
+      
+      On Basics tab:  
+      Fill in VM details:  
+      Availability options: Select Availability Set  
+      Choose the Availability Set you just created (avset-demo)  
+      Complete the rest of VM setup: size, disk, networking, etc. 
+      Details can be found in the other tutorial "Lab 1 Create Virtual Machine using Azure Portal". 
+      
+      Click Review + Create, then Create.  
+      Repeat these steps to add more VMs to the same Availability Set.
+      
 Step 4: Verify the settings
   
-  Go to Availability Sets in the portal. Click on as-demo. Under Instances, you will see the list of VMs and their assigned Fault Domain and Update Domain.
-  
-  This confirms your VMs are spread for high availability.
+      Go to Availability Sets in the portal. Click on as-demo. 
+      Under Instances, you will see the list of VMs and their assigned Fault Domain and Update Domain.  
+      This confirms your VMs are spread for high availability.
 
 Use Cases
 
-  Ideal for the following scenarios:
-  
-  Web server clusters
-  
-  Internal line-of-business apps
-  
-  Any stateful workload needing uptime within a region
+      Ideal for the following scenarios:  
+      Web server clusters  
+      Internal line-of-business apps  
+      Any stateful workload needing uptime within a region
 
