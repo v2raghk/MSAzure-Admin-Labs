@@ -64,3 +64,7 @@ Tips & Best Practices:
                   Enable Just-in-Time VM access from Microsoft Defender for security.      
                   Use Azure Bastion for more secure access. We will cover this in another tutorial.      
                   It is advisable to enable auto-shutdown on Dev/Test environments to save cost. Dont enable it on Production VMs.
+
+
+
+
